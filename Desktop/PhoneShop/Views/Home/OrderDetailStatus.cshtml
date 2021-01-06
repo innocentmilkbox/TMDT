@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Status of your order details";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+@model List<PhoneShop.Models.Domain.OrderDetail>
+
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Order</a></li>
+                <li class="active">Order Details</li>
+            </ol>
+        </div>
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="cart_menu">
+                        <td class="image">Item</td>
+                        <td class="description"></td>
+                        <td class="price">Price</td>
+                        <td class="quantity">Quantity</td>
+                        <td class="total">Total</td>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                
+                                <td class="cart_product">
+                                    <a href=""><img src="~/images/@item.Product.imgPath" alt="" height="100px"></a>
+                                </td>
+                                <td class="cart_description">
+                                    <h4><a href="">@item.Product.productName</a></h4>
+                                    <p>@item.Product.productName</p>
+                                </td>
+                                <td class="cart_price">
+                                    <p>@item.Product.PriceOut</p>
+                                </td>
+                                <td class="cart_quantity">
+                                    <p>@item.quantity</p>
+                                </td>
+                                <td class="cart_total">
+                                    <p class="cart_total_price">@(item.quantity *item.Product.PriceOut)</p>
+                                </td>
+                                
+                            </tr>
+                        }
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section> <!--/#cart_items-->

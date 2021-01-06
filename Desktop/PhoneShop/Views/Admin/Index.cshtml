@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>You're an admin of this website</h2>
+<h3>Name: @Session["AdminName"]</h3>
+<hr />
+
+<div>
+    <button class="btn btn-primary" title="Create New Admin Account" onclick="location.href='@Url.Action("Create", "Admin")'">New Admin Account</button>
+    <button class="btn btn-primary" title="List of Admin Account" onclick="location.href='@Url.Action("List", "Admin")'">List Admin Account</button>
+</div>
+<hr />
+
+

@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewBag.Title = "OrderAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@model List<PhoneShop.Models.Domain.Order>
+
+
+    <form action="@Url.Action("OrderByDateRange")" method="post" class="signup-form">
+        <input type="date" value=@DateTime.Today id="startdate" name="startdate" />
+        <input type="date" value=@DateTime.Today id="enddate" name="enddate" />
+        <input type="submit" class="button"/>
+    </form>
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li class="active">Orders Status</li>
+            </ol>
+        </div>
+        <div class="table-responsive cart_info">
+            <table id="tblorder" class="table table-condensed">
+                <thead>
+                    <tr class="cart_menu">
+                        <td>Customer</td>
+                        <td>isCheck</td>
+                        <td>isAssign</td>
+                        <td>isDeliveried</td>
+                        <td>Order Date</td>
+                        <td>Total Value</td>
+                        <td>Details</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>                                
+                                <td>
+                                    @Html.ActionLink(item.Customers.customerName, "CustomerInfo", new { id = item.CustomersId })
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => item.isChecked)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => item.isDeliverAssign)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => item.isPaid)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => item.orderDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => item.TotalValue)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Details", "OrderDetailAdmin", new { orderId = item.Id })
+                                </td>
+                            </tr>
+                        }
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section> <!--/#cart_items-->
+
+
+@section scripts
+{
+
+
+    <script>
+        $(document).ready(function () {
+            $("#tblorder").DataTable();
+        })
+    </script>
+}

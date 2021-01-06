@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "You're a One Time Buyer";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+<h2>OneTimeBuyer</h2>
+
+<div class="signup-form">
+    <form method="post" action="@Url.Action("OneTimeCheckOut","Home")">
+        <input type="text" id="namezz" , name="namezz"/>
+        <input type="text" id="phonezz" , name="phonezz"/>
+        <input type="text" id="addzz" , name="addzz" value="@ViewBag.Addzz" readonly="readonly" />
+        <button type="submit" class="btn btn-default">Check Out</button>
+    </form>
+</div>

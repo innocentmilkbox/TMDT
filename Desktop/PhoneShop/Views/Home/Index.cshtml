@@ -1,0 +1,295 @@
+﻿@model List<PhoneShop.Models.Domain.Product>
+
+@{
+    ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+
+}
+
+
+<section id="slider">
+    <!--slider-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#slider-carousel" data-slide-to="1"></li>
+                        <li data-target="#slider-carousel" data-slide-to="2"></li>
+                    </ol>
+
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            @*<div class="col-sm-6">
+                                    <h1><span>E</span>-SHOPPER</h1>
+                                    <h2>Free E-Commerce Template</h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+                                    <button type="button" class="btn btn-default get">Get it now</button>
+                                </div>*@
+                            <div class="col-sm-12">
+                                <img src="~/images/home/carousel1.jpg" class="girl img-responsive" alt="" />
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-sm-12">
+                                <img src="~/images/home/carou4.jpg" class="girl img-responsive" alt="" />
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="col-sm-12">
+                                <img src="~/images/home/carousel3.jpg" class="girl img-responsive" alt="" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section><!--/slider-->
+<hr />
+<div class="rowzz">
+    <!-- Brand Start -->
+    <div class="brand">
+        <div class="container-fluid">
+            <div class="brand-slider">
+                <div class="brand-item"><img src="~/images/logo1.jpg" alt=""></div>
+                <div class="brand-item"><img src="~/images/logo2.jpg" alt=""></div>
+                <div class="brand-item"><img src="~/images/logo3.jpg" alt=""></div>
+                @*<div class="brand-item"><img src="~/images/logo4.jpg" alt=""></div>*@
+                <div class="brand-item"><img src="~/images/logo5.jpg" alt=""></div>
+                <div class="brand-item"><img src="~/images/logo6.jpg" alt=""></div>
+                <div class="brand-item"><img src="~/images/logo7.jpg" alt=""></div>
+                <div class="brand-item"><img src="~/images/logo8.jpg" alt=""></div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Brand End -->
+
+
+
+<div class="recommended_items">
+    <!--recommended_items-->
+    <h2 class="title text-left">highlight</h2>
+
+    <div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            @if (Model != null)
+            {
+                <div class="item active">
+
+                    @for (int i = 0; i < 4; i++)
+                    {
+                        <div class="col-sm-3">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="~/images/@Model[i].imgPath" alt="@Model[i].productName" />
+                                        <h2>
+                                            @Html.DisplayFor(m => Model[i].PriceOut)
+                                        </h2>
+                                        <p>
+                                            @Html.DisplayFor(m => Model[i].productName)
+                                        </p>
+
+                                        <a href="@Url.Action("AddToCart", new { id = Model[i].Id, quantity = 1})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        <a href="@Url.Action("ProductDetails", new { id = Model[i].Id})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Details</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                if (Model.Count > 4)
+                {
+                    <div class="item">
+                        @for (int i = 4; i < 8; i++)
+                        {
+                            <div class="col-sm-3">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="~/images/@Model[i].imgPath" alt="@Model[i].productName" />
+                                            <h2>
+                                                @Html.DisplayFor(m => Model[i].PriceOut)
+                                            </h2>
+                                            <p>
+                                                @Html.DisplayFor(m => Model[i].productName)
+                                            </p>
+                                            <a href="@Url.Action("AddToCart", new { id = Model[i].Id, quantity = 1})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <a href="@Url.Action("ProductDetails", new { id = Model[i].Id})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Details</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                }
+
+            }
+        </div>
+
+        <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+</div><!--/recommended_items-->
+
+<!-- Call to Action Start -->
+<div class="call-to-action">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h1>Call us for any queries</h1>
+            </div>
+            <div class="col-md-6">
+                <a href="#">+012-345-6789</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Call to Action End -->
+
+<div class="recommended_items">
+    <!--recommended_items-->
+    <h2 class="title text-left">discount</h2>
+
+    <div id="recommended-item-carousel-2" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            @if (Model != null)
+            {
+                <div class="item active">
+
+                    @for (int i = 0; i < 4; i++)
+                    {
+                        <div class="col-sm-3">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="~/images/@Model[i].imgPath" alt="@Model[i].productName" />
+                                        <h2>
+                                            @Html.DisplayFor(m => Model[i].PriceOut)
+                                        </h2>
+                                        <p>
+                                            @Html.DisplayFor(m => Model[i].productName)
+                                        </p>
+
+                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        <a href="@Url.Action("ProductDetails", new { id = Model[i].Id})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Details</a>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                if (Model.Count > 4)
+                {
+                    <div class="item">
+                        @for (int i = 4; i < 8; i++)
+                        {
+                            <div class="col-sm-3">
+                                <div class="product-image-wrapper">
+                                    <div class="single-products">
+                                        <div class="productinfo text-center">
+                                            <img src="~/images/@Model[i].imgPath" alt="@Model[i].productName" />
+                                            <h2>
+                                                @Html.DisplayFor(m => Model[i].PriceOut)
+                                            </h2>
+                                            <p>
+                                                @Html.DisplayFor(m => Model[i].productName)
+                                            </p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                            <a href="@Url.Action("ProductDetails", new { id = Model[i].Id})" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Details</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                }
+
+            }
+        </div>
+        <a class="left recommended-item-control" href="#recommended-item-carousel-2" data-slide="prev">
+            <i class="fa fa-angle-left"></i>
+        </a>
+        <a class="right recommended-item-control" href="#recommended-item-carousel-2" data-slide="next">
+            <i class="fa fa-angle-right"></i>
+        </a>
+    </div>
+</div><!--/recommended_items-->
+<hr />
+<!-- Feature Start-->
+<div class="feature">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-3 col-md-6 feature-col">
+                <div class="feature-content">
+                    <i class="fa fa-credit-card"></i>
+                    <h2>Secure Payment</h2>
+                    <p>
+                        Trust us!!!
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 feature-col">
+                <div class="feature-content">
+                    <i class="fa fa-truck"></i>
+                    <h2>National Delivery</h2>
+                    <p>
+                        Within minimum purchase value
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 feature-col">
+                <div class="feature-content">
+                    <i class="fa fa-hand-o-left"></i>
+                    <h2>90 Days Return</h2>
+                    <p>
+                        Some Some
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 feature-col">
+                <div class="feature-content">
+                    <i class="fa fa-comment"></i>
+                    <h2>24/7 Support</h2>
+                    <p>
+                        We'll be here
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Feature End-->
+<hr />
+<div id="view_counter">
+    <div class="row">
+        <i class="fa fa-bar-chart-o"></i>
+        <p>100002 Total Views, 542 Today</p>
+    </div>
+
+</div>

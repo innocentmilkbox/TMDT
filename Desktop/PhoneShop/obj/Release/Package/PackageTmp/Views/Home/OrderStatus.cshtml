@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "OrderStatus";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+
+}
+@model List<PhoneShop.Models.Domain.Order>
+<h2>OrderStatus</h2>
+<section id="cart_items">
+    <div class="container">
+        <div class="breadcrumbs">
+            <ol class="breadcrumb">
+                <li><a href="#">Home</a></li>
+                <li class="active">Orders Status</li>
+            </ol>
+        </div>
+        <div class="table-responsive cart_info">
+            <table class="table table-condensed">
+                <thead>
+                    <tr class="cart_menu">
+                        <td>OrderID</td>
+                        <td>Order Date</td>
+                        <td>IsChecked?</td>
+                        <td>IsPaid?</td>
+                        <td>Total Value</td>
+                        <td>Details</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(x => item.Id)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => item.orderDate)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => item.isChecked)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => item.isPaid)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(x => item.TotalValue)
+                                </td>          
+                                <td>
+                                    @Html.ActionLink("Details", "OrderDetailStatus", new { orderId = item.Id})
+                                </td>
+                            </tr>
+                        }
+                    }
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section> <!--/#cart_items-->

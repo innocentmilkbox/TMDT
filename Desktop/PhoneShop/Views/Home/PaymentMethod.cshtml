@@ -1,0 +1,12 @@
+﻿
+@{
+    ViewBag.Title = "PaymentMethod";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+
+<h2>PaymentMethod</h2>
+<div class="center">
+    <button class="btn btn-primary" title="Cash On Delivery" onclick="location.href='@Url.Action("CashOnDelivery", "Home")'">Cash On Delivery</button>
+    <button class="btn btn-primary" title="List of Admin Account" onclick="location.href='@Url.Action("PayPal", "Home")'">PayPal</button>
+</div>
+

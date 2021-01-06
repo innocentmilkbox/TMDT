@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_WebLayout.cshtml";
+}
+@model PhoneShop.Models.Domain.Customer
+<section id="form">
+    <!--form-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="signup-form">
+                    <!--sign up form-->
+                    <h2>New User Signup!</h2>
+                
+                    <form action="Register" method="post">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @*<input type="text" placeholder="Name" />*@
+                        @Html.TextBoxFor(m => Model.customerName, new { @type = "text", @placeholder = "Name" })
+                        @*<input type="email" placeholder="Email Address" />*@
+                        @Html.TextBoxFor(m => Model.email, new { @type = "email", @placeholder = "Email Address" })
+                        @*<input type="password" placeholder="Password" />*@
+                        @Html.TextBoxFor(m => Model.hashedPassword, new { @type = "password", @placeholder = "Password"})
+                        @*<input type="number" placeholder="Phone Number" />*@
+                        @Html.TextBoxFor(m => Model.phoneNumber, new { @type = "number", @placeholder = "Phone Number"})
+
+                        @Html.HiddenFor(m => m.totalTradingValue, new { @Value = 0})
+                        @Html.HiddenFor(m => m.joinDate, new { @Value = DateTime.Today})
+                        @Html.HiddenFor(m => m.lastestAccess, new { @Value = DateTime.Today})
+                        <button type="submit" class="btn btn-default">Signup</button>
+                    </form>
+                </div><!--/sign up form-->
+            </div>
+        </div>
+    </div>
+</section><!--/form-->

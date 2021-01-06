@@ -1,0 +1,51 @@
+﻿@model PhoneShop.Models.Domain.Promotion
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Promotion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.percentRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.percentRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.startDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.useCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.useCount)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

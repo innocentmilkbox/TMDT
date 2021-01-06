@@ -1,0 +1,57 @@
+﻿@model PhoneShop.Models.Domain.Promotion
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Promotion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.percentRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.percentRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.startDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endDay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endDay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.useCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.useCount)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
